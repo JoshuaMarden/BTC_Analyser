@@ -1,9 +1,6 @@
-import datetime
-import time
 import sys
 import os
 import pandas as pd
-import numpy as np
 import logging
 from scipy import signal
 import matplotlib.pyplot as plt
@@ -28,7 +25,9 @@ else:
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
-logging.info(f"\n\nDetrending data.\n")
+logging.info(f"--------------------------------------------")
+logging.info(f"Detrending data.")
+logging.info(f"--------------------------------------------\n\n")
 logging.info(f"\nData trends must be removed prior to multiple regression"\
              "analaysis.\n")
 
@@ -146,7 +145,10 @@ for col in BTCDF.columns:
 
 adjustedDF.index = pd.to_datetime(adjustedDF.index)
 adjustedDF.to_pickle(os.path.join(DATA_DIR, f"detrended_data_frame.pkl"))
-logging.info(f"New adjusted data frame created and pickled.")
+logging.info(f"New adjusted data frame created and pickled:")
+logging.info(adjustedDF)
+logging.info(f"Plotting data:")
+
 
 # Plotting Data
 
@@ -192,3 +194,5 @@ plt.subplots_adjust(bottom=0.04)
 # Save the plot
 fig = plt.gcf()
 save_plot(fig, logDir, "detrended_data_plots.png")
+logging.info("Detrended dataplots saved")
+logging.info("\n\nScript Complete!\n\n")

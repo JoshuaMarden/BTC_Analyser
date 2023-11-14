@@ -1,5 +1,4 @@
 import logging
-import time
 import os
 import sys
 import pandas as pd
@@ -17,8 +16,9 @@ else:
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
-logging.info(f"\n\nCalculating 2yr : 10yr Bond Yields.\n")
-
+logging.info(f"--------------------------------------------")
+logging.info(f"Calculating 2yr : 10yr Bond Yields.")
+logging.info(f"--------------------------------------------\n\n")
 
 
 # Check for bond yield data
@@ -44,4 +44,9 @@ print(yieldCurveDF)
 
 yieldCurveDF.to_pickle(os.path.join(DATA_DIR, f"US_2y_10y_yield_curve_data.pkl"))
 logging.info(f"Yield comparison completed and pickled.")
-print(yieldCurveDF)
+
+logging.info("Yield curve dataframe:")
+logging.info(yieldCurveDF)
+
+
+logging.info("\n\nScript Complete!\n\n")

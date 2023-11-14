@@ -17,12 +17,15 @@ if len(sys.argv) > 1:
     logDir = sys.argv[1]
     print(f"log directory: {logDir}")
 else:
-    raise ValueError("The dated log directory was not provided as an argument.")
+    logDir = LOGS_DIR
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
 
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
-
-logging.info(f"\n\nDownloading BTC data.\n")
+logging.info(f"--------------------------------------------")
+logging.info(f"Downloading BTC data.")
+logging.info(f"--------------------------------------------\n\n")
 logging.info(f"\nThis script downloads in batches and only downloads new data\n"\
              "points added since last update.\n")
 
@@ -117,7 +120,9 @@ else:
     logging.info(f"{str(len(ohlcv))} new data points downloaded.")
     logging.info("New data added to existing data frame.")
 
-print(btcDataFrame)
+logging.info("BTC Dataframe:")
+logging.info(btcDataFrame)
+logging.info("\n\nScript Complete!\n\n")
 
 
 

@@ -28,7 +28,10 @@ if len(sys.argv) > 1:
 else:
     raise ValueError("The dated log directory was not provided as an argument.")
 
-logging.info(f"\n\nDownloading Bond Yields and (real) Interest Rate data.\n")
+
+logging.info(f"--------------------------------------------")
+logging.info(f"Downloading Bond Yields and (real) Interest Rate data.")
+logging.info(f"--------------------------------------------\n\n")
 logging.info(f"\nThis script downloads the full data set again, in-line with\n\
              the dates we have for BTC.\n")
 
@@ -112,5 +115,7 @@ for dataSet in dataNames:
   logging.info(f"New data frame created for {dataSet[2]} (#{str(len(dataSetDF))} data points) and pickled.")
   time.sleep(2)
 
+  logging.info("Just downloaded and pickled:")
+  logging.info(dataSetDF)
 
-  print(dataSetDF)
+logging.info("\n\nScript Complete!\n\n")

@@ -22,8 +22,9 @@ else:
 
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
-
+logging.info(f"--------------------------------------------")
 logging.info(f"\n\nDownloading S&P 500 data.\n")
+logging.info(f"--------------------------------------------\n\n")
 logging.info(f"\nThis script downloads in batches and only downloads new data\n\
              points added since last update that are also in the BTC data.\n")
 
@@ -183,5 +184,6 @@ else:
     logging.info(f"{str(len(ohlcvDF))} new data points downloaded.")
     logging.info("New data added to existing data frame.")
 
-
-print(ohlcvDF)
+logging.info("S&P 500 Dataframe:")
+logging.info(ohlcvDF)
+logging.info("\n\nScript Complete!\n\n")

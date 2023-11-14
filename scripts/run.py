@@ -43,6 +43,7 @@ def runScripts(datedLogDir):
     # Run each script in the list
     for script in scriptsInOrder:
         # Construct the command to run the script with arguments
+        print("\n                    ***                     \n")
         command = ['python', script, datedLogDir]
         # Run the command and wait for it to complete
         subprocess.run(command, check=True)
@@ -61,7 +62,7 @@ def main():
     datedLogDir = createDatedLogDir()
     # Run the scripts with the log folder as an argument
     runScripts(datedLogDir)
-    print(f"All scripts have been run. Logs and figures saved in: {datedLogDir}")
+    print(f"\n\nAll scripts have been run. Logs and figures saved in: {datedLogDir}")
 
 if __name__ == "__main__":
     main()

@@ -20,13 +20,14 @@ if len(sys.argv) > 1:
     print(f"log directory: {logDir}")
 else:
     logDir = LOGS_DIR
-    print(f"No specific log directory provided. Creating generic log\
-          in logs folder.")
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
     
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
-
-logging.info(f"\n\nPerforming Multiple Regression Analysis post PCA.\n")
+logging.info(f"--------------------------------------------")
+logging.info(f"Performing Multiple Regression Analysis post PCA.")
+logging.info(f"--------------------------------------------\n\n")
 #logging.info(f"\n\nStandard Errors are heteroscedasticity robust [HC3]\n")
 
 
@@ -56,8 +57,11 @@ X = sm.add_constant(X)
 model = sm.OLS(y, X).fit(cov_type='HC1')
 
 # Print out the statistics
-print("\n\nPost PCA Multiple Regression Analysis Results:\n\n")
+logging.info("Post PCA Multiple Regression Analysis Results:")
+logging.info("\n")
 logging.info(model.summary())
+
+logging.info("Plotting data..")
 
 # Residuals vs Fitted
 plt.figure(figsize=(10, 5))
@@ -101,3 +105,6 @@ plt.ylabel('Cooks Distance')
 # Save the plot
 fig = plt.gcf()
 save_plot(fig, logDir, "post_pca_cooks_distance_plot.png")
+
+logging.info("Plots completed and saved.")
+logging.info("\n\nScript Complete!\n\n")

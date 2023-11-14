@@ -1,6 +1,5 @@
 import requests
 import datetime
-import time
 import pandas as pd
 import sys
 import os
@@ -19,7 +18,9 @@ else:
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
-logging.info(f"\n\nDownloading US debt data.\n")
+logging.info(f"--------------------------------------------")
+logging.info(f"Downloading US debt data.")
+logging.info(f"--------------------------------------------\n\n")
 logging.info(f"\nThis script downloads in batches and only downloads new data\n"\
              "points added since last update, provded they match dates in the\n"\
              "BTC data set.\n")
@@ -166,5 +167,6 @@ debtDF['Debt'] = debtDF['Debt'].astype(float)
 
 debtDF.to_pickle(os.path.join(DATA_DIR, f"US_debt_data.pkl"))
 logging.info(f"New data frame created for US debt (#{str(len(debtDF))} data points) and pickled.")
-
-print(debtDF)
+logging.info("Debt dataframe:")
+logging.info(debtDF)
+logging.info("\n\nScript Complete!\n\n")

@@ -20,12 +20,14 @@ if len(sys.argv) > 1:
     print(f"log directory: {logDir}")
 else:
     logDir = LOGS_DIR
-    print(f"No specific log directory provided. Creating generic\
-          in logs folder.")
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
 
 setup_logging(logDir)
 
+logging.info(f"--------------------------------------------")
 logging.info(f"\n\nPerforming Pearson Correlation & Principle Component Analysis.\n")
+logging.info(f"--------------------------------------------\n\n")
 
 # Check for BTC data
 try:
@@ -143,7 +145,9 @@ else:
     raise ValueError("Row counts of tempDF and PCADF do not match.")
 
 postPCADF.to_pickle(os.path.join(DATA_DIR, "post_pca_data.pkl"))
-logging.info('\n\nPCA dataframe saved in data as "post_pca_data.pkl".\n')
+logging.info('PCA dataframe saved:')
+logging.info(postPCADF)
+logging.info('Plotting data..')
 
 
 # Plot some of the outputs
@@ -156,7 +160,7 @@ plt.xlabel('Principal Component')
 plt.ylabel('Variance Explained')
 plt.xticks(range(1, len(PCA.explained_variance_ratio_) + 1))
 save_plot(plt, logDir, "pca_scree_plot.png")
-logging.info('\n\nPCA scree plot saved.\n')
+logging.info('PCA scree plot saved.')
 
 # # Component Loadings Plot
 # plt.figure(figsize=(12, 6))
@@ -196,3 +200,4 @@ logging.info('\n\nPCA scree plot saved.\n')
 # save_plot(plt, logDir, "pca_score_plot.png")
 # logging.info('\nPCA Score Plot saved.\n')
 
+logging.info("\n\nScript Complete!\n\n")
