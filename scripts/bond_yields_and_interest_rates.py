@@ -35,7 +35,7 @@ else:
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading Bond Yields and (real) Interest Rate data.")
 logging.info(f"--------------------------------------------\n\n")
-logging.info(f"\nThis script downloads the full data set again, in-line with\n\
+logging.info(f"This script downloads the full data set again, in-line with\n\
              the dates we have for BTC.\n")
 
 

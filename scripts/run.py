@@ -53,7 +53,7 @@ def runScripts(datedLogDir):
 
 # Function to ask for user input to continue
 def requireInput():
-    input("Press Enter to run the scripts or Ctrl+C to cancel...")
+    input("Press Enter to get data and perform analysis or Ctrl+C to cancel...")
 
 # Main function to coordinate the process
 def main():

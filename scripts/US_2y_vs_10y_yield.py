@@ -47,6 +47,4 @@ logging.info(f"Yield comparison completed and pickled.")
 
 logging.info("Yield curve dataframe:")
 logging.info(yieldCurveDF)
-
-
 logging.info("\n\nScript Complete!\n\n")

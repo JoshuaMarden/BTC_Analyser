@@ -30,7 +30,7 @@ setup_logging(logDir)
 logging.info(f"--------------------------------------------")
 logging.info(f"Detrending data.")
 logging.info(f"--------------------------------------------\n\n")
-logging.info(f"\nData trends must be removed prior to multiple regression"\
+logging.info(f"Data trends must be removed prior to multiple regression"\
              "analaysis.\n")
 
 

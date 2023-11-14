@@ -29,7 +29,6 @@ setup_logging(logDir)
 logging.info(f"--------------------------------------------")
 logging.info(f"Performing Multiple Regression Analysis post PCA.")
 logging.info(f"--------------------------------------------\n\n")
-#logging.info(f"\n\nStandard Errors are heteroscedasticity robust [HC3]\n")
 
 
 # Check for PCA DF
@@ -53,13 +52,10 @@ y = dataFrame['BTC Price']
 X = sm.add_constant(X)
 
 # Fit the model
-#model = sm.OLS(y, X).fit()
-# MUST USE TYPE HC3 due to blatant heteroscedacity!!!
 model = sm.OLS(y, X).fit(cov_type='HC1')
 
 # Print out the statistics
-logging.info("Post PCA Multiple Regression Analysis Results:")
-logging.info("\n")
+logging.info("Post PCA Multiple Regression Analysis Results:\n\n")
 logging.info(model.summary())
 
 logging.info("Plotting data..")

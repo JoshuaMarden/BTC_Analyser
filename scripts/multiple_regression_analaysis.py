@@ -23,8 +23,10 @@ else:
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
-logging.info(f"\n\nPerforming Multiple Regression Analysis for P.\n")
-logging.info(f"\n\nStandard Errors are heteroscedasticity robust [HC3]\n")
+logging.info(f"--------------------------------------------")
+logging.info(f"Performing Multiple Regression Analysis")
+logging.info(f"--------------------------------------------\n\n")
+logging.info(f"Standard Errors are heteroscedasticity robust [HC3]\n")
 
 
 # Check for BTC data
@@ -58,7 +60,7 @@ X = sm.add_constant(X)
 model = sm.OLS(y, X).fit(cov_type='HC3')
 
 # Print out the statistics
-print("\n\nMultiple Regression Analysis Results:\n\n")
+print("Multiple Regression Analysis Results:\n\n")
 logging.info(model.summary())
 
 # Residuals vs Fitted
