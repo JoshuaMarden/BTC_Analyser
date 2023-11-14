@@ -4,7 +4,7 @@ import sys
 import pandas as pd
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from config import DATA_DIR
+from config import DATA_DIR, LOGS_DIR
 from utilities import setup_logging
 
 # Setup logging

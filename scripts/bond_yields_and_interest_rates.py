@@ -13,7 +13,7 @@ import pandas as pd
 # Yes I should probably not do this.
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from config import DATA_DIR
+from config import DATA_DIR, LOGS_DIR
 from utilities import setup_logging
 
 apiKey = "XsGfKb9pLcyxBhB77Xm_" # QuandL API Key
@@ -26,7 +26,10 @@ if len(sys.argv) > 1:
     logDir = sys.argv[1]
     print(f"log directory: {logDir}")
 else:
-    raise ValueError("The dated log directory was not provided as an argument.")
+    logDir = LOGS_DIR
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
+
 
 
 logging.info(f"--------------------------------------------")

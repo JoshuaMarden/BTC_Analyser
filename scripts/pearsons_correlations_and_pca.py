@@ -23,6 +23,7 @@ else:
     print(f"No specific log directory provided. Creating generic log"\
           "in logs folder.")
 
+
 setup_logging(logDir)
 
 logging.info(f"--------------------------------------------")

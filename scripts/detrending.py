@@ -9,7 +9,7 @@ from statsmodels.tsa.stattools import adfuller
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from config import DATA_DIR
-from utilities import setup_logging
+from utilities import setup_logging, save_plot
 from utilities import save_plot
 
 
@@ -21,9 +21,11 @@ if len(sys.argv) > 1:
     logDir = sys.argv[1]
     print(f"log directory: {logDir}")
 else:
-    raise ValueError("The dated log directory was not provided as an argument.")
-# Call the function from utilities.py to setup logging
+    logDir = LOGS_DIR
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
 setup_logging(logDir)
+
 
 logging.info(f"--------------------------------------------")
 logging.info(f"Detrending data.")

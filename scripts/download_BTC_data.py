@@ -10,7 +10,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from utilities import unix_to_ymd
 from utilities import setup_logging
 
-from config import DATA_DIR
+from config import DATA_DIR, LOGS_DIR
 
 # Setup logging
 if len(sys.argv) > 1:
