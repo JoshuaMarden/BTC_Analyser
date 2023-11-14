@@ -2,7 +2,7 @@
 Examines at the price of BTC and potentially influential macroeconomic metrics.
 
 This is essentially a series of scripts which download historic economic data and the price of BTC.
-Data is detrended and a multiple rgeression analysis is performed.
+That data is detrended and a multiple rgeression analysis is performed.
 
 Pearsons correlation is carried out and correlated variables are used in a principled component analysis.
 A seconds multiple regression analysis is peformed the remaning variables and new principle components.
