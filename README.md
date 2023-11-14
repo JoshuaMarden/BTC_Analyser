@@ -5,8 +5,8 @@ This is essentially a series of scripts which download historic economic data an
 That data is detrended and a multiple rgeression analysis is performed.
 
 Pearsons correlation is carried out and correlated variables are used in a principled component analysis.
-A seconds multiple regression analysis is peformed the remaning variables and new principle components.
-This effectively accounts for the heteroscedacity of some of then data.
+A second multiple regression analysis is peformed on the remaning variables and new principle components.
+This effectively accounts for the heteroscedacity of some of the data.
 
 Each time the analyser runs it creates a log containing the details of the analysis. The log also includes
 plotted data.
