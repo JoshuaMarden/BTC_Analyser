@@ -4,7 +4,8 @@ import datetime
 import subprocess
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from config import LOGS_DIR
+from config import LOGS_DIR, SCRIPTS_DIR
+
 
 def createDatedLogDir():
     # Get the current date and time formatted as 'YYYY-MM-DD_HH-MM-SS'
@@ -44,7 +45,8 @@ def runScripts(datedLogDir):
     for script in scriptsInOrder:
         # Construct the command to run the script with arguments
         print("\n                    ***                     \n")
-        command = ['python', script, datedLogDir]
+        scriptPath = os.path.join(SCRIPTS_DIR, script)
+        command = ['python', scriptPath, datedLogDir]
         # Run the command and wait for it to complete
         subprocess.run(command, check=True)
 

@@ -7,7 +7,7 @@ import pandas as pd
 import logging
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from config import DATA_DIR, LOGS_DIR
+from config import LOGS_DIR, DATA_DIR
 from utilities import setup_logging
 
 dataName = "SP500"
@@ -64,7 +64,8 @@ except FileNotFoundError:
 
 if dataFrom == dataUntil: # if the data matched we can just terminate the script now
     logging.info(f"Data for {dataName} dates matches data for BTC dates.")
-    logging.info(f"Terminating script.")
+    logging.info(f"Terminating script - no action needed.")
+    logging.info("\n\nScript Complete!\n\n")
     sys.exit()
 
 # Get data starting date 7 days before our BTC data start date in case
