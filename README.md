@@ -10,7 +10,8 @@ A second multiple regression analysis is peformed on the new principle component
 This effectively accounts for the strong heteroscedacity of the data.
 
 Each time the analyser runs it creates a dated log containing the details of the analysis. The log includes
-plotted data. In Docs there are some files to help the uninitiated understand the outputs and graphs.
+plotted data and summaries of each analysis. In `docs` there are some files to help the uninitiated
+understand the outputs and graphs.
 
 User input is requested to determin at what threshold independent variables are considered correlated
 enough to be included in the PCA.
