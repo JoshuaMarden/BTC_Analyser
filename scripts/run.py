@@ -53,7 +53,8 @@ def runScripts(datedLogDir):
 
 # Function to ask for user input to continue
 def requireInput():
-    input("Press Enter to get data and perform analysis or Ctrl+C to cancel...")
+    input("Hit enter to download and analyse data\n\
+          or Ctrl+C to cancel...\n")
 
 # Main function to coordinate the process
 def main():
@@ -64,7 +65,7 @@ def main():
     datedLogDir = createDatedLogDir()
     # Run the scripts with the log folder as an argument
     runScripts(datedLogDir)
-    print(f"\n\nAll scripts have been run. Logs and figures saved in: {datedLogDir}")
+    print(f"\n\nAll scripts have been run. Logs and figures saved in: {datedLogDir}\n\n")
 
 if __name__ == "__main__":
     main()

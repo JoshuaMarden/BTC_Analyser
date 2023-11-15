@@ -29,12 +29,14 @@ else:
     logDir = LOGS_DIR
     print(f"No specific log directory provided. Creating generic log"\
           "in logs folder.")
+# Call the function from utilities.py to setup logging
+setup_logging(logDir)
 
 
 
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading Bond Yields and (real) Interest Rate data.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 logging.info(f"This script downloads the full data set again, in-line with\n"\
              "the dates we have for BTC.\n")
 

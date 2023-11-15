@@ -23,9 +23,10 @@ else:
 
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
+
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading BTC data.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 logging.info(f"This script downloads in batches and only downloads new data\n"\
              "points added since last update.\n")
 
@@ -71,7 +72,7 @@ while (ohlcv[-1][0]) != (mostRecentOnline[0][0]):
 
     # Establish what time onwards we want data from
     getFrom = int(ohlcv[-1][0] + 1)
-    print(f"sending off batch request for data #{batchNumber}")
+    logging.info(f"sending off batch request for data #{batchNumber}")
 
     #send data request
     ohlcvBatch = exchange.fetch_ohlcv(currencyPair, timeFrame, since=getFrom, limit=requestSize)

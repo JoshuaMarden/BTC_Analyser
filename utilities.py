@@ -28,6 +28,24 @@ def setup_logging(logDir):
                         handlers=[logging.FileHandler(logName),
                                   logging.StreamHandler()])
     
-def save_plot(fig, logDir, filename):
-    plot_file_path = os.path.join(logDir, filename)
+
+def save_plot(fig, filename, path):
+    """
+    mainly for saving plots to summary directories 
+    """
+    
+    plot_file_path = os.path.join(path, filename)
     fig.savefig(plot_file_path)
+
+
+def write_to_file(message, path):
+    """
+    mainly for saving analysis outputs to summary files 
+    """
+    # Convert message to string if it's not already
+    if not isinstance(message, str):
+        message = str(message)
+
+    with open(path, 'a') as file:
+        file.write(message + "\n")
+

@@ -10,7 +10,6 @@ from statsmodels.tsa.stattools import adfuller
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from config import DATA_DIR
 from utilities import setup_logging, save_plot
-from utilities import save_plot
 
 
 # need to add exceptions in case any dataframe is missing a datapoint and needs to be excluded
@@ -24,14 +23,16 @@ else:
     logDir = LOGS_DIR
     print(f"No specific log directory provided. Creating generic log"\
           "in logs folder.")
+# Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
 
 logging.info(f"--------------------------------------------")
 logging.info(f"Detrending data.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 logging.info(f"Data trends must be removed prior to multiple regression"\
              "analaysis.\n")
+
 
 
 # Check for BTC data
@@ -84,16 +85,14 @@ BTCDF.set_index("Date", inplace=True)
 # Merge dfs
 for fileName, dataFrame in dataFrames.items():
     
-    print(f"\n\n----------> Processing: {fileName}\n")
+    logging.info(f"\n\n----------> Processing: {fileName}\n")
     tempDF = dataFrame
     # Check if the DataFrame has a 'Close' column
     if "Close" in dataFrame.columns:  # Check for 'Close' in the column names
-        print("ohlcv data")
         # Create a new DataFrame from the 'Close' column
         tempDF = pd.DataFrame(tempDF[["Date", "Close"]])
         tempDF.columns = ["Date", fileName]  # Rename the column to the filename
     
-    print(tempDF)
     # Make sure dates are correctly formatted and use as index
     tempDF['Date'] = pd.to_datetime(tempDF['Date'])
     tempDF['Date'] = tempDF['Date'].dt.date
@@ -115,8 +114,10 @@ for col in BTCDF.columns:
     BTCDF.rename(columns={col: colString}, inplace=True)
 
 adjustedDF = BTCDF
-
-logging.info("\n\nPerforming Augmented Dickey-Fuller Tests...\n\n")
+logging.info("New unified dataframe created:\n\n")
+logging.info(BTCDF)
+logging.info("\n")
+logging.info("Performing Augmented Dickey-Fuller Tests...\n\n")
 
 # We now need to account for stationarity in the data
 
@@ -135,19 +136,19 @@ for col in BTCDF.columns:
    
     if ADFResult[0] > critValue:
 
-        print(f"ADF Statistic ({ADFResult[0]:.3f}) does not fall beneath the critical value at 5% ({critValue:.3f}).")
-        print(f"p-value = {ADFResult[1]:.3f}")
-        print("Detrending..\n")
+        logging.info(f"ADF Statistic ({ADFResult[0]:.3f}) does not fall beneath the critical value at 5% ({critValue:.3f}).")
+        logging.info(f"p-value = {ADFResult[1]:.3f}")
+        logging.info("Detrending..\n")
         adjustedDF[detrendedColName] = signal.detrend(adjustedDF[(col)])        
     
     else:    
-        print(f"ADF Statistic ({ADFResult[0]:.3f}) falls beneath the critical value at 5% ({critValue:.3f}).")
-        print(f"No adjustment needed.")
-        print(f"p-value: {ADFResult[1]:.3f}")
+        logging.info(f"ADF Statistic ({ADFResult[0]:.3f}) falls beneath the critical value at 5% ({critValue:.3f}).")
+        logging.info(f"No adjustment needed.")
+        logging.info(f"p-value: {ADFResult[1]:.3f}")
 
 adjustedDF.index = pd.to_datetime(adjustedDF.index)
 adjustedDF.to_pickle(os.path.join(DATA_DIR, f"detrended_data_frame.pkl"))
-logging.info(f"New adjusted data frame created and pickled:")
+logging.info(f"New adjusted data frame created and pickled:\n\n")
 logging.info(adjustedDF)
 logging.info(f"Plotting data:")
 
@@ -195,6 +196,6 @@ plt.subplots_adjust(bottom=0.04)
 
 # Save the plot
 fig = plt.gcf()
-save_plot(fig, logDir, "detrended_data_plots.png")
+save_plot(fig, "detrended_data_plots.png", logDir)
 logging.info("Detrended dataplots saved")
 logging.info("\n\nScript Complete!\n\n")

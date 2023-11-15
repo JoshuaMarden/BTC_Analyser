@@ -12,13 +12,15 @@ if len(sys.argv) > 1:
     logDir = sys.argv[1]
     print(f"log directory: {logDir}")
 else:
-    raise ValueError("The dated log directory was not provided as an argument.")
+    logDir = LOGS_DIR
+    print(f"No specific log directory provided. Creating generic log"\
+          "in logs folder.")
 # Call the function from utilities.py to setup logging
 setup_logging(logDir)
 
 logging.info(f"--------------------------------------------")
 logging.info(f"Calculating 2yr : 10yr Bond Yields.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 
 
 # Check for bond yield data
@@ -33,18 +35,16 @@ except FileNotFoundError:
 
 yieldsDF['2y/10y Yield Spread (%)'] = (yieldsDF['10 YR'] - yieldsDF['2 YR']) * 100  # Multiply by 100 to convert to percentage
 # Show the updated DataFrame
-print(yieldsDF)
 
 
 
 yieldCurveDF = yieldsDF.iloc[:, [0, -1]]
 yieldCurveDF.iloc[:, -1] = yieldCurveDF.iloc[:, -1].astype(float)
 
-print(yieldCurveDF)
 
 yieldCurveDF.to_pickle(os.path.join(DATA_DIR, f"US_2y_10y_yield_curve_data.pkl"))
 logging.info(f"Yield comparison completed and pickled.")
 
-logging.info("Yield curve dataframe:")
+logging.info("2y/10y Bond Yield Spread (%) Dataframe\n\n")
 logging.info(yieldCurveDF)
 logging.info("\n\nScript Complete!\n\n")

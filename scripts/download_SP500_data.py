@@ -27,7 +27,7 @@ else:
 setup_logging(logDir)
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading S&P 500 data.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 logging.info(f"This script downloads in batches and only downloads new data\n\
              points added since last update that are also in the BTC data.\n")
 

@@ -1,0 +1,99 @@
+What is a Multiple Regression Analysis
+_____________________________________________________
+
+
+
+Multiple Regression Analysis (MRA), often called multiple regression, is a statistical technique used to understand the relationship between one dependent variable (DV; for us BTC) and two or more independent variables (IVs).
+
+
+
+How to understand the MRA Summary?
+_____________________________________________________
+
+
+Dep. Variable:. This is what we are trying to predict or explain with our model. In this case it's the price of BTC.
+
+R-squared: Values range from 0 to 1. A higher R-squared (closer to 1) means a better fit, indicating that the model explains a large portion of the variance in the dependent variable. A lower R-squared (closer to 0) suggests a poor fit.
+
+Adj. R-squared: Similar to R-squared, but adjusts for the number of predictors. A value closer to 1 is better. If it's much lower than the R-squared, it indicates that some predictors may not be useful.
+
+F-statistic: This tests the overall significance of the model. A higher F-statistic (far above 1) suggests that the model is better than a model with no independent variables at all. A low F-statistic (close to 1) might indicate that our model isn't capturing much more than what would be captured by a model with no predictors.
+
+Prob (F-statistic): This is the probability associated with the F-statistic. A low value (typically <0.05) suggests that our model is statistically significant.
+
+Log-Likelihood: Higher values indicate a model that better fits your data. There's no absolute good or bad value; it's used for comparison between different models.
+
+AIC & BIC: Lower values are better. These criteria balance the complexity of the model (number of predictors) against its performance. They help in model selection, especially when comparing different models.
+
+Covariance Type: 'HC1' indicates that the model accounts for potential heteroscedasticity, ensuring more reliable standard errors. 'HC3' is stricter still.
+
+Coefficients: The values indicate the expected change in the dependent variable for a one-unit change in the independent variable. High absolute values indicate a stronger effect.
+
+Standard Error: Smaller values indicate more precise estimates of the coefficients.
+
+z: This statistic tests if the coefficients significantly differ from zero. A large absolute value (typically > 1.96 or < -1.96 for a 95% confidence level) indicates significance.
+
+P>|z|: A value less than 0.05 typically suggests that the coefficient is significantly different from zero. This is a commonly 'accepted' threshold in science as we can be 95% percent certain that we can reject the null hypothesis (that there is no effect of the examined factors on BTC price). Please remember that whilst 95% is good, you would not get on a plane if you were only 95% confident it would land safely.
+
+[0.025 0.975]: This is the 95% confidence interval for the coefficient. If it doesn't cross zero, it suggests the coefficient is significant.
+
+Omnibus: A low value suggests normally distributed residuals, which is ideal for linear regression.
+
+Durbin-Watson: Values close to 2 suggest no autocorrelation. Values below 1 or above 3 could be a cause for concern, indicating autocorrelation.
+
+Prob(Omnibus): A high value (typically >0.05) indicates normal distribution of residuals.
+
+Jarque-Bera (JB): A low value indicates normal distribution. High values suggest non-normality.
+
+Skew: A value close to 0 indicates symmetry. Values far from 0 indicate skewness in the data.
+
+Prob(JB): Similar to Omnibus, a high p-value here indicates normal distribution.
+
+Kurtosis: Values close to 3 indicate a normal distribution. Higher values suggest a more peaked distribution, and lower values a flatter distribution than normal.
+
+Cond. No.: High values (1000s) suggest potential multicollinearity. Values below 30 are generally not a concern.
+
+
+
+How to Understand the plots provided with the MRA?
+_____________________________________________________
+
+
+1.
+Residuals vs Fitted Plot
+Purpose: This plot helps assess the linearity and homoscedasticity (constant variance) of the residuals.
+What to Look For:
+
+Good Signs: A random scatter of points without any discernible pattern. This suggests that the residuals have constant variance and there are no obvious violations of linearity.
+
+Bad Signs: Clear patterns or trends (like a curve). This suggests non-linearity in your data. Funnel-shaped patterns suggest heteroscedasticity (the variance of the residuals changes across levels of the predictor variable).
+
+
+2.
+QQ-Plot (Quantile-Quantile Plot)
+Purpose: The QQ-Plot is used to assess whether the residuals are normally distributed.
+What to Look For:
+
+Good Signs: Data points closely following the diagonal line. This suggests that the residuals are normally distributed.
+
+Bad Signs: Data points deviating significantly from the diagonal line, especially at the ends. This indicates that the residuals are not normally distributed, suggesting issues with your model’s assumptions.
+
+
+3.
+Standardized Residuals
+Purpose: Examining the standardized residuals helps identify outliers and points with large residuals.
+What to Look For:
+
+Good Signs: Most residuals falling within the range of about -2 to +2. This range suggests normal fluctuation.
+
+Bad Signs: Residuals that exceed +/- 2. These could be potential outliers or influential points that are unduly affecting the regression model.
+
+
+4. 
+Leverage vs Standardized Residuals (Cook's Distance)
+Purpose: This plot helps identify influential data points that have a significant impact on the calculation of the regression coefficients.
+What to Look For:
+
+Good Signs: Most data points clustered near the center of the plot, indicating low leverage and small residuals.
+
+Bad Signs: Points far from the center, especially in the top-right or bottom-right of the plot. These are high-leverage points with large residuals and can significantly impact your model’s performance. Cook's Distance combines both leverage and residual size to identify these influential points.

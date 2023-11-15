@@ -1,0 +1,90 @@
+What is a Pearson's Correlation Coefficient?
+_____________________________________________________
+
+Pearson's correlation coefficient, is a statistical measure that calculates the strength and direction of a linear relationship between two variables. The value of the correlation coefficient ranges between -1 and +1, where:
+
++1 indicates a perfect positive linear relationship: as one variable increases, the other variable also increases at a constant rate.
+
+-1 indicates a perfect negative linear relationship: as one variable increases, the other variable decreases at a constant rate.
+
+0 indicates no linear relationship: there is no consistent relationship between the variables.
+
+It is important to select medium to strong correlations when selecting which variables to use in the Principle Component Analysis. Otherwise we will be increase the random noise included in the PCA, and it will obfuscate the true effect of the independent variables on the dependent variable (BTC Price).
+
+In the analyser, when you chose a threshold, e.g. 0.7, any correlation at or above 0.7, or at or below -0.7 will be used in the PCA. It doesn't matter if the correlation is negative or positive, only that it is not weak.
+
+
+
+What is a Principle Component Analysis?
+_____________________________________________________
+
+Principal Component Analysis (PCA) is a statistical technique used in machine learning and statistical analysis to simplify the complexity in high-dimensional data while retaining trends and patterns. It does this by transforming the original variables into a new set of variables, the 'principal components', which are orthogonal (uncorrelated), and which account for the most variance in the data.
+
+When conducting a multiple regression analysis, your indpendent variables are supposed to be INDEPENDENT. However we are looking at lots of measures of the economy, so the variables will all be related. Using a PCA we can take trends from the data that are unrelated.
+
+Note that these Principle Components are staistically useful but don't directly measure anything in real life. You can point to unemployment figures or inflation figures, and speculate directly on how they might affect BTC Price. However with Principle Components, we have distinct patterns taken from a mix of ecomonmic signals. Thus the components are abstract measures; they are very useful but only within the confines of the study in which they have been generated. Currently I only use these components as indicators of general economic health, I have not used them to make forecasts / predictions. Though this is possible.
+
+
+How to Understand the plots provided with the PCA?
+_____________________________________________________
+
+
+
+1.
+Biplot
+A Biplot is a type of plot that shows both the scores (the transformed data points in terms of principal components) and the loadings (the coefficients of the linear combination of the original variables that make up the principal components) on the same plot.
+
+What to Look For:
+
+The direction and length of the vectors (arrows) indicate how each variable contributes to the principal components.
+Points represent the observations. Their location shows how they score on the principal components.
+Clusters of points can indicate groups of similar observations.
+
+Good Signs:
+
+Clear separation of clusters (if present) can indicate well-defined groupings in your data.
+Longer vectors suggest that a variable is well-represented in the PCA.
+
+Bad Signs:
+
+Short vectors close to the origin suggest that a variable doesn't have a strong influence on either of the principal components shown.
+Overlapping or jumbled clusters can indicate a lack of distinct groups or patterns in the data.
+
+
+
+2.
+Components Loading Plot
+The Components Loading Plot shows the contribution of each variable to each principal component. It's similar to a biplot, but it only displays the loadings (not the data points).
+
+What to Look For:
+
+The position of each variable on the plot indicates its contribution to the principal components.
+Variables that are close to each other are positively correlated; those positioned 180 degrees apart are negatively correlated.
+
+Good Signs:
+
+Variables that strongly contribute to different principal components can suggest underlying patterns or factors in the data.
+
+Bad Signs:
+
+If all variables are clustered together, it might indicate that the PCA is not effectively distinguishing between different features of the data.
+
+
+3.
+Scree Plot
+A Scree Plot shows the variance explained by each principal component. It's often used to decide how many principal components should be retained.
+
+What to Look For:
+
+The plot typically shows a clear 'elbow' - a point where the rate of decrease in variance sharply changes. This point is often used to choose the number of components to keep.
+
+Good Signs:
+
+A clear elbow in the plot suggesting a natural cutoff for the number of principal components.
+The first few components explain a large proportion of the variance, indicating that they capture significant structure in the data.
+
+Bad Signs:
+
+If the variance decreases gradually without a clear elbow, it may be difficult to decide how many components to retain.
+
+If the first few components explain very little variance, it may suggest that PCA is not capturing the main structure of the data effectively.

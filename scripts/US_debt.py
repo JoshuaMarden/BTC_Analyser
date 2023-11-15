@@ -17,11 +17,13 @@ else:
     logDir = LOGS_DIR
     print(f"No specific log directory provided. Creating generic log"\
           "in logs folder.")
+# Call the function from utilities.py to setup logging
+setup_logging(logDir)
 
 
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading US debt data.")
-logging.info(f"--------------------------------------------\n\n")
+logging.info(f"--------------------------------------------")
 logging.info(f"This script downloads in batches and only downloads new data\n"\
              "points added since last update, provded they match dates in the\n"\
              "BTC data set.\n")
