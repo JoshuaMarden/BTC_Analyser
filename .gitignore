@@ -1,6 +1,7 @@
+# keep some empty dirs for now
 data/*
-data/.gitkeep
-scripts/Old
-btc_analyser_venv/
+!data/.gitkeep
 logs/*
-logs/.gitkeep
+!logs/.gitkeep
+btc_analyser_venv/
+
