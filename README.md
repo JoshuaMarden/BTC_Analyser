@@ -18,6 +18,7 @@ enough to be included in the PCA.
 _____________________
 
 Immediate To Do:
+ - Check it runs on other machines via `launch.bat`
  - Allow analysis to be run without requiring that data has to be updated.
  - Allow analysis to be re-run instead of just terminating so it's easier to try different
    settings.
