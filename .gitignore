@@ -2,3 +2,5 @@ logs/*
 data/*
 scripts/Old
 btc_analyser_venv/
+data/.gitkeep
+logs/.gitkeep
