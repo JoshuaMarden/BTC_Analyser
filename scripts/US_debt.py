@@ -53,7 +53,7 @@ dataFrom = datetime.datetime.strptime(dataFrom, '%Y-%m-%d')
 dataFrom = dataFrom.date()
 
 timedelta = datetime.timedelta(days=7)
-sevenDaysPrior = dataFrom - timedelta # So we can interpolate data
+sevenDaysPrior = dataFrom - timedelta # So we can forward fill data data
 
 dataUntil = datetime.datetime.strptime(dataUntil, "%Y-%m-%d")
 dataUntil = dataUntil.date()

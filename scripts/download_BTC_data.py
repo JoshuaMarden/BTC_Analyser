@@ -27,10 +27,10 @@ setup_logging(logDir)
 logging.info(f"--------------------------------------------")
 logging.info(f"Downloading BTC data.")
 logging.info(f"--------------------------------------------")
-logging.info(f"This script downloads in batches and only downloads new data\n"\
+logging.info(f"\nThis script downloads in batches and only downloads new data\n"\
              "points added since last update.\n")
 
-
+# Declare the variables used to request data
 timeFrame = "1d"
 currencyPair = "BTC/USDT"
 exchangePlatform = "binance"
@@ -40,14 +40,13 @@ requestSize = 498 # max is 500ps
 exchange = ccxt.binance()
 
 # Initiate list with every data entry
-try:
+try: # Check if we already have some BTC data stored locally
     btcDataFrame = pd.read_pickle(os.path.join(DATA_DIR, "BTC_ohlcv_data.pkl"))
     lastRow = btcDataFrame.iloc[-1].tolist() # get last entry
     ohlcv = [lastRow]  # Making it a list of lists
-    alreadyData = True
+    alreadyData = True # record that we already have data for later in the script
+    
     # convert UTC date to a unix timestamp which is used by the server
-    # and thus a necessary copnversion
-
     ymdDate = datetime.datetime.strptime(ohlcv[0][0], '%Y-%m-%d')
     unixTimestamp = int(ymdDate.timestamp())
     unixTimestamp = unixTimestamp * 1000
@@ -55,17 +54,20 @@ try:
 
     logging.info("Historical data detected.")
     logging.info(f"Most recent timestamp in local database:   {unix_to_ymd(lastRow[0])}")
-except FileNotFoundError:
+
+except FileNotFoundError: # If there is no BTC data, download from scratch
     ohlcv = exchange.fetch_ohlcv(currencyPair, timeFrame, since=0, limit=1)
     logging.info("No historical data detected. Entire data set must be downloaded.")
     alreadyData = False
 
 # Get the most recent data point from the online data base
-# (when this date appears in our list, we know we have no more data to add)
+# (when this date appears in our list, we know we have no more data to request)
 mostRecentOnline = exchange.fetch_ohlcv(currencyPair, timeFrame, limit = 1)
 logging.info(f"Most recent timestamp in online database:  {unix_to_ymd(mostRecentOnline[0][0])}")
 
+# Initiate batch number counter for logging purposes
 batchNumber = 0
+
 # Start sending off requests of candle data in batches
 while (ohlcv[-1][0]) != (mostRecentOnline[0][0]):
     batchNumber = batchNumber + 1
@@ -84,7 +86,7 @@ while (ohlcv[-1][0]) != (mostRecentOnline[0][0]):
         # Add amended data to the list
         ohlcv.append(candle)
 
-    # Update the most recent candle each loop
+    # Update the most BTC data point available online with each loop
     # (just in case we get a new candle as the script is running)
     mostRecentOnline = exchange.fetch_ohlcv(currencyPair, timeFrame, limit = 1)
 
@@ -99,16 +101,16 @@ for dataPoint in ohlcv:
 
 
 # Store data
-if batchNumber == 0:
+if batchNumber == 0: # Handle if nothing was added
    logging.info("Data up to date. Nothing to be appended.")
-elif not alreadyData:
+elif not alreadyData: # Handle if entierly new BTC datafrmae needs to be stored
     logging.info(f"Sent off {batchNumber} requests.")
     # create brand spanking new df
     btcDataFrame = pd.DataFrame(ohlcv, columns=['Date', 'Open', 'High', 'Low', 'Close', 'Volume'])
     # Pickle the DataFrame
     btcDataFrame.to_pickle(os.path.join(DATA_DIR, "BTC_ohlcv_data.pkl"))
     logging.info(f"New data frame created from {str(len(ohlcv))} new data points and pickled.")
-else:
+else: # Handle adding new BTC data to existing local data
     logging.info(f"Sent off {batchNumber} requests.")
     # convert the new data to a dataframe
     tempDataframe = pd.DataFrame(ohlcv, columns=['Date', 'Open', 'High', 'Low', 'Close', 'Volume'])
