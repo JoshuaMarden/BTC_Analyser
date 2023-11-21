@@ -11,7 +11,7 @@ Pearsons correlation is then carried out and correlated variables are used in a 
 A second multiple regression analysis is peformed on the new principle components.
 This effectively accounts for the strong heteroscedacity of the data.
 
-SARIMAX is then performed. WARNING SARIMA does not fit this data series and is to be disregarded.
+SARIMAX is then performed. WARNING SARIMAX does not fit this data series and is to be disregarded.
 
 Each time the analyser runs it creates a dated log containing the details of the analysis. The log includes
 plotted data and summaries of each analysis. In `docs` there are some files to help the uninitiated
