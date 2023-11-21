@@ -30,6 +30,7 @@ Immediate To Do:
 _____________________
 
 Wishful To Do:
+- find a way to better remove seasonality and detrend data.
 - add functional forecasting
 - Download and analyse blockchain data for its own analysis.
 - Provide report summarising forecasts based off of economic and blockchain data.
