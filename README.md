@@ -8,11 +8,11 @@ That data is detrended following an Automated Dickie-Fuller test and a
 preliminary multiple regression analysis is performed.
 
 Pearsons correlation is then carried out and correlated variables are used in a principle component analysis.
+This effectively accounts for the strong heteroscedacity of the data but detrending needs improving
 A second multiple regression analysis is peformed on the new principle components.
-This effectively accounts for the strong heteroscedacity of the data.
 
-SARIMAX is then performed. WARNING SARIMAX does not currently take into account seasonality.
-It cannot therefore forecast effectively.
+SARIMAX is then performed. WARNING SARIMAX does not currently take into account seasonality and the lagged
+effect of the economic proinciple components needs to be examined.
 
 Each time the analyser runs it creates a dated log containing the details of the analysis. The log includes
 plotted data and summaries of each analysis. In `docs` there are some files to help the uninitiated
