@@ -2,6 +2,7 @@
 
 
 Examines at the influence of large amounts of economic data (debt, futures, interest, ETFs) on bitcoin Price.
+The primary issue I am tackling is overfitting as a result of inadequate detrending.
 
 First historic economic data and the price of BTC over time is downloaded.
 That data is detrended following an Automated Dickie-Fuller test and a 
