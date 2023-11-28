@@ -37,9 +37,11 @@ that exhibit some relationship to BTC and only including those.
 
 _____________________
 
-Immediate To Do:
+High Priority:
  - Check it runs on other machines via `launch.bat`
  - Allow analysis to be run without requiring that data has to be updated.
+ - Change what economic factors go into the PCA.
+ - Add more data such as unemployment data.
  - Allow analysis to be re-run instead of just terminating so it's easier to try different
    settings.
 - Improve commenting and standardise script layouts. Bring closer to PEP-8.
