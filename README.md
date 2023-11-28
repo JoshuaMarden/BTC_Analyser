@@ -15,7 +15,9 @@ A range of lags from days, to weeks, to months are introduced to look for a dela
 on BTC price.
 
 SARIMAX is then performed. Users are allowed to input specific p, q, and d values or use a rnage to look for the best
-combination. Lag can also be introduced. A forecast is also generated but is invalidated by high p-values.
+combination. Lag can also be introduced. A forecast is also generated but is invalidated by high p-values. The
+optimisation method used is Broyden-Fletcher-Goldfarb-Shanno Algorithm with a maximum of 500 iterations allowed
+which is slow.
 
 Each time the analyser runs it creates a dated log containing the details of the analysis. The log includes
 plotted data and summaries of each step of the analysis. In `docs` there are some files to help the uninitiated
