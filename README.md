@@ -42,8 +42,6 @@ High Priority:
  - Look into tranformations for kurtosis.
  - Change what economic factors go into the PCA.
  - Add more data such as unemployment data.
- - Allow analysis to be re-run instead of just terminating so it's easier to try different
-   settings.
 - Improve commenting and standardise script layouts. Bring closer to PEP-8.
 
 _____________________
