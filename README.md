@@ -27,8 +27,11 @@ understand the outputs and graphs. These need updating.
 _I would suggest at this current time that BTC prices cannot reliably be tracked using gross economic measures as I have here.
 BTC has transitioned from a fringe ponzi-scheme to an asset of decreasing risk with high potential
 yield, it has not therefore responded consistently to economic events over time. The type of investor
-and their rationale for holding bitcoin will have changed extensively.
-I also need to select and justify what economic measures I include to reduce nosie.
+and their rationale for holding bitcoin will have changed extensively._
+_(quality of this present analysis not-withstanding)._
+
+_I also need to select and justify what economic measures I include to reduce nosie, e.g. by identifying metrics
+that exhibit some relationship to BTC and only including those.
 (the quality of this present analysis not-withstanding)._
 
 
