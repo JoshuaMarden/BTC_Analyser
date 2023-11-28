@@ -30,9 +30,8 @@ yield, it has not therefore responded consistently to economic events over time.
 and their rationale for holding bitcoin will have changed extensively._
 _(quality of this present analysis not-withstanding)._
 
-_I also need to select and justify what economic measures I include to reduce nosie, e.g. by identifying metrics
-that exhibit some relationship to BTC and only including those.
-(the quality of this present analysis not-withstanding)._
+_It would be pertinent to select and justify what economic measures I include to reduce nosie, e.g. by identifying metrics
+that exhibit some relationship to BTC and only including those._
 
 
 _____________________
