@@ -1,6 +1,6 @@
 # BTC_Analyser
 
-Examines at the influence of large amounts of economic data (debt, futures, interest, ETFs) on bitcoin Price.
+Examines the influence of large amounts of economic data (debt, futures, interest, ETFs) on bitcoin Price.
 
 First historic economic data and the price of BTC over time is downloaded.
 That data is detrended following an Automated Dickie-Fuller test and a 
