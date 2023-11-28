@@ -12,12 +12,12 @@ This effectively accounts for the strong heteroscedacity of the data.
 
 A second round of multiple regression analyses are peformed on the new principle components and the detrended BTC price.
 A range of lags from days, to weeks, to months are introduced to look for a delayed effect of the economic component
-on BTC price.
+on BTC price. This may help identify which principle component and which lag settings are appropriate.
 
-SARIMAX is then performed. Users are allowed to input specific p, q, and d values or use a rnage to look for the best
-combination. Lag can also be introduced. A forecast is also generated but is invalidated by high p-values. The
-optimisation method used is Broyden-Fletcher-Goldfarb-Shanno Algorithm with a maximum of 500 iterations allowed
-which is slow.
+SARIMAX is then performed. Users are allowed to input specific p, q, and d values or use a range to look for the best
+combination. Lag can also be introduced, and if it is a forecast is generated lag-days into the future. The
+optimisation method used is Broyden-Fletcher-Goldfarb-Shanno with a maximum of 500 iterations allowed
+which is slow but the data is rich.
 
 Each time the analyser runs it creates a dated log containing the details of the analysis. The log includes
 plotted data and summaries of each step of the analysis. In `docs` there are some files to help the uninitiated
