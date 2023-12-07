@@ -15,7 +15,7 @@ A range of lags from days, to weeks, to months are introduced to look for a dela
 on BTC price. This may help identify which principle component and which lag settings are appropriate.
 
 SARIMAX is then performed. Users are allowed to input specific p, q, and d values or use a range to look for the best
-combination. Lag can also be introduced, and if it is a forecast is generated lag-days into the future. The
+combination. Lag can also be introduced; if it is a forecast is generated lag-days into the future. The
 optimisation method used is Broyden-Fletcher-Goldfarb-Shanno with a maximum of 500 iterations allowed
 which is slow but the data is rich.
 
