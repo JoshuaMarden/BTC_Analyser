@@ -3,7 +3,7 @@
 Examines the influence of large amounts of economic data (debt, futures, interest, ETFs) on bitcoin Price.
 
 First historic economic data and the price of BTC over time is downloaded.
-That data is detrended following an Automated Dickie-Fuller test and a 
+The data is detrended following an Automated Dickie-Fuller test and a 
 preliminary multiple regression analysis is performed. You will have the choice to manually detrend it or
 allow it to be automatically detrended (recommended).
 
